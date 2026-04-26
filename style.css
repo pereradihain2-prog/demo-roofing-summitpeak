@@ -1270,6 +1270,36 @@ p { line-height: 1.7; }
 /* ── Responsive tweaks ── */
 @media (max-width: 599px) {
   .btn-lg { padding: 15px 24px; font-size: 1rem; }
-  .section { padding: 56px 0; }
+  .section { padding: 40px 0; }
   h1 { font-size: 1.9rem; }
+}
+
+/* ── Mobile fixes (768px) ── */
+@media (max-width: 768px) {
+
+  /* Fix 1: Logo — reduce font size so "▲ Summit Peak" stays on one line
+     at 375px. Available logo width ≈ 108px; Oswald condensed at 1.1rem ≈ 87px.
+     Switch height to min-height so the header can't clip a taller logo. */
+  .logo-name { font-size: 1.1rem; }
+  .header-inner { height: auto; min-height: 68px; padding: 10px 20px; }
+
+  /* All pages: tighter section + page-hero padding at mobile */
+  .section { padding: 40px 0; }
+  .section-sm { padding: 32px 0; }
+  .page-hero { padding: 48px 20px 40px; }
+
+  /* Fix 2: Contact page — form section subtle background */
+  .contact-form-section {
+    background: var(--off-white);
+    padding-top: 32px;
+  }
+
+  /* Tighten gap between form and contact info on mobile */
+  .contact-grid { gap: 24px; }
+
+  /* Visual separator + white background before map so it reads as distinct */
+  [aria-label="Office location map"] {
+    border-top: 2px solid var(--steel);
+    background: var(--white);
+  }
 }
