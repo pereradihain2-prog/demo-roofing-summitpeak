@@ -1302,4 +1302,35 @@ p { line-height: 1.7; }
     border-top: 2px solid var(--steel);
     background: var(--white);
   }
+
+  /* Fix 3: Financing card — reduce padding, prevent child overflow escaping */
+  #financing .container > div > div:last-child > div {
+    padding: 24px 20px !important;
+    overflow: hidden;
+    max-width: 100%;
+  }
+
+  /* Stack stats vertically — flex-direction not set inline so no !important needed;
+     gap:16px overrides the inline gap:24px */
+  #financing .container > div > div:last-child > div > div:first-child {
+    flex-direction: column;
+    gap: 16px !important;
+  }
+
+  /* Primary overflow culprit: "Get My Free Quote — Ask About Financing" is ~386px
+     wide at nowrap. Higher specificity here beats .btn { white-space:nowrap }
+     without needing !important. */
+  #financing .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Financing bar (index/services): btn already wraps via flex-wrap on parent,
+     but white-space:nowrap can still push narrow screens. Remove constraint. */
+  .financing-bar-inner .btn {
+    white-space: normal;
+  }
 }
